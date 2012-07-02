@@ -49,15 +49,18 @@ my $nt = Net::Twitter->new(
   consumer_secret     => $consumer_secret,
   access_token        => $access_token,
   access_token_secret => $access_token_secret,
-  legacy_lists_api    => 0 
+  traits   => [qw/OAuth API::REST/]
 );
 
 my @ids;
+my $count=1;
 
 for ( my $cursor = -1, my $r; $cursor; $cursor = $r->{next_cursor} ) {
 	$r = $nt->followers_ids({ cursor => $cursor , screen_name => $handle });
 	push @ids, @{ $r->{ids} };
         #sleep 240;
+	#print "count = $count\n";
+	$count++;
 }
 
 my $num_ids_in_array = @ids;
