@@ -10,6 +10,7 @@ my $access_token = "arbit";
 my $access_token_secret = "arbit";
 my $file_name = "get_data.conf";
 
+#Opening the conf file
 open ($CONF_FILE, "<$file_name");
 
 while (<$CONF_FILE>) {
