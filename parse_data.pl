@@ -257,13 +257,8 @@ foreach my $file (@files)  {
 			}
 		
 			my $current_time;
-			if ($handle eq 'bdutt') {
-				$current_time = parsedate("Fri Jul 6 12:00:00 2012");
-			}
-			else {
-				$current_time = parsedate("Sun Jul 8 12:00:00 2012");
-			}
-			
+			$current_time = parsedate(strftime('%a %b %d %H:%M:%S %Y',gmtime));
+
 			(my $status_created_at = $current_follower_hash{status_created_at}) =~ s/(\S*)(\s*)(\S*)$/$2$3/; 
 			#print "time = $status_created_at\n";
 			my $status_created_at_time;
